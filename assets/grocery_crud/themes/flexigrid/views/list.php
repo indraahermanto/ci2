@@ -36,25 +36,25 @@
 			<td align="left" width='20%'>
 				<div class='tools'>				
 					<?php if(!$unset_delete){?>
-                    	<a href='<?php echo $row->delete_url?>' title='<?php echo $this->l('list_delete')?> <?php echo $subject?>' class="delete-row" >
+                    	<a href='<?php echo site_url($row->delete_url)?>' title='<?php echo $this->l('list_delete')?> <?php echo $subject?>' class="delete-row" >
                     			<span class='delete-icon'></span>
                     	</a>
                     <?php }?>
                     <?php if(!$unset_edit){?>
-						<a href='<?php echo $row->edit_url?>' title='<?php echo $this->l('list_edit')?> <?php echo $subject?>' class="edit_button"><span class='edit-icon'></span></a>
+						<a href='<?php echo site_url($row->edit_url)?>' title='<?php echo $this->l('list_edit')?> <?php echo $subject?>' class="edit_button"><span class='edit-icon'></span></a>
 					<?php }?>
 					<?php if(!$unset_read){?>
-						<a href='<?php echo $row->read_url?>' title='<?php echo $this->l('list_view')?> <?php echo $subject?>' class="edit_button"><span class='read-icon'></span></a>
+						<a href='<?php echo site_url($row->read_url)?>' title='<?php echo $this->l('list_view')?> <?php echo $subject?>' class="edit_button"><span class='read-icon'></span></a>
 					<?php }?>
 					<?php 
 					if(!empty($row->action_urls)){
 						foreach($row->action_urls as $action_unique_id => $action_url){ 
 							$action = $actions[$action_unique_id];
 					?>
-							<a href="<?php echo $action_url; ?>" class="<?php echo $action->css_class; ?> crud-action" title="<?php echo $action->label?>"><?php 
+							<a href="<?php echo site_url($action_url); ?>" class="<?php echo $action->css_class; ?> crud-action" title="<?php echo $action->label?>"><?php 
 								if(!empty($action->image_url))
 								{
-									?><img src="<?php echo $action->image_url; ?>" alt="<?php echo $action->label?>" /><?php 	
+									?><img src="<?php echo site_url($action->image_url); ?>" alt="<?php echo $action->label?>" /><?php 	
 								}
 							?></a>		
 					<?php }

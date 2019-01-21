@@ -59,7 +59,7 @@ if($success_message !== null){?>
 	<div class="tDiv">
 		<?php if(!$unset_add){?>
 		<div class="tDiv2">
-        	<a href='<?php echo $add_url?>' title='<?php echo $this->l('list_add'); ?> <?php echo $subject?>' class='add-anchor add_button'>
+        	<a href='<?php echo site_url($add_url)?>' title='<?php echo $this->l('list_add'); ?> <?php echo $subject?>' class='add-anchor add_button'>
 			<div class="fbutton">
 				<div>
 					<span class="add"><?php echo $this->l('list_add'); ?> <?php echo $subject?></span>
@@ -72,7 +72,7 @@ if($success_message !== null){?>
 		<?php }?>
 		<div class="tDiv3">
 			<?php if(!$unset_export) { ?>
-        	<a class="export-anchor" data-url="<?php echo $export_url; ?>" target="_blank">
+        	<a class="export-anchor" data-url="<?php echo site_url($export_url); ?>" target="_blank">
 				<div class="fbutton">
 					<div>
 						<span class="export"><?php echo $this->l('list_export');?></span>
@@ -82,7 +82,7 @@ if($success_message !== null){?>
 			<div class="btnseparator"></div>
 			<?php } ?>
 			<?php if(!$unset_print) { ?>
-        	<a class="print-anchor" data-url="<?php echo $print_url; ?>">
+        	<a class="print-anchor" data-url="<?php echo site_url($print_url); ?>">
 				<div class="fbutton">
 					<div>
 						<span class="print"><?php echo $this->l('list_print');?></span>
@@ -99,7 +99,7 @@ if($success_message !== null){?>
 	<div id='ajax_list' class="ajax_list">
 		<?php echo $list_view?>
 	</div>
-	<?php echo form_open( $ajax_list_url, 'method="post" id="filtering_form" class="filtering_form" autocomplete = "off" data-ajax-list-info-url="'.$ajax_list_info_url.'"'); ?>
+	<?php echo form_open( site_url($ajax_list_url), 'method="post" id="filtering_form" class="filtering_form" autocomplete = "off" data-ajax-list-info-url="'.site_url($ajax_list_info_url).'"'); ?>
 	<div class="sDiv quickSearchBox" id='quickSearchBox'>
 		<div class="sDiv2">
 			<?php echo $this->l('list_search');?>: <input type="text" class="qsbsearch_fieldox search_text" name="search_text" size="30" id='search_text'>

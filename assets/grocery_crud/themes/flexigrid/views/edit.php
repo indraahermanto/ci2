@@ -21,7 +21,7 @@
 		</div>
 	</div>
 <div id='main-table-box'>
-	<?php echo form_open( $update_url, 'method="post" id="crudForm"  enctype="multipart/form-data"'); ?>
+	<?php echo form_open( site_url($update_url), 'method="post" id="crudForm"  enctype="multipart/form-data"'); ?>
 	<div class='form-div'>
 		<?php
 		$counter = 0;
@@ -74,8 +74,8 @@
 </div>
 </div>
 <script>
-	var validation_url = '<?php echo $validation_url?>';
-	var list_url = '<?php echo $list_url?>';
+	var validation_url = '<?php echo site_url($validation_url)?>';
+	var list_url = '<?php echo site_url($list_url)?>';
 
 	var message_alert_edit_form = "<?php echo $this->l('alert_edit_form')?>";
 	var message_update_error = "<?php echo $this->l('update_error')?>";

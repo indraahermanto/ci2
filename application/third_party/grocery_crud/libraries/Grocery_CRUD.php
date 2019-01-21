@@ -3413,9 +3413,9 @@ class grocery_CRUD_States extends grocery_CRUD_Layout
 	protected function getListSuccessUrl($primary_key = null)
 	{
 		if(empty($primary_key))
-			return $this->state_url('success',true);
+			return site_url($this->state_url('success',true));
 		else
-			return $this->state_url('success/'.$primary_key,true);
+			return site_url($this->state_url('success/'.$primary_key,true));
 	}
 
 	protected function getUploadUrl($field_name)
