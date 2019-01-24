@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] 				= 'admin/home';
+$route['admin/home'] 								= 'main';
 $route['404_override'] 							= 'errors/page_missing';
 $route['errors/page_missing'] 			= 'admin/errors/page_missing';
 $route['translate_uri_dashes'] 			= FALSE;
@@ -91,45 +92,32 @@ $route['users/groups/update_validation/(:num)']		= "admin/user/group/index/updat
 $route['users/groups/delete/(:num)']							= "admin/user/group/index/delete/$1";
 
 $route['cover_photo']								= "admin/cover_photo";*/
-$route['panel/admin/users/export']	= "admin/panel/admin_user/export";
-$route['panel/admin/users/print']		= "admin/panel/admin_user/print";
-$route['panel/admin/users']		= "admin/panel/admin_user";
-$route['panel/admin/users/index']		= "admin/panel/admin_user";
-$route['panel/admin/users/create']	= "admin/panel/admin_user_create";
-$route['panel/admin/users/success/(:num)']						= "admin/panel/admin_user";
-$route['panel/admin/users/ajax_list']									= "admin/panel/admin_user/index/ajax_list";
-$route['panel/admin/users/ajax_list_info']						= "admin/panel/admin_user/index/ajax_list_info";
-$route['panel/admin/users/read/(:num)']								= "admin/panel/admin_user/index/read/$1";
-$route['panel/admin/users/edit/(:num)']								= "admin/panel/admin_user/index/edit/$1";
-$route['panel/admin/users/update/(:num)']							= "admin/panel/admin_user/index/update/$1";
-$route['panel/admin/users/update_validation/(:num)']	= "admin/panel/admin_user/index/update_validation/$1";
-$route['panel/admin/users/reset_password/(:num)']			= "admin/panel/admin_user_reset_password/$1";
+$route['settings/admin/users']								= "admin/panel/admin_user";
+$route['settings/admin/users/create']					= "admin/panel/admin_user_create";
+$route['settings/admin/users/reset_password/(:num)']	= "admin/panel/admin_user_reset_password/$1";
+// $route['settings/admin/users/(:any)']					= "admin/panel/admin_user/$1";
+$route['settings/admin/users/(:any)/(:num)']	= "admin/panel/admin_user/$1/$2";
 
-$route['panel/admin/users/groups']				= "admin/panel/admin_user_group";
-$route['panel/admin/users/groups/index']	= "admin/panel/admin_user_group";
-$route['panel/admin/users/groups/add']		= "admin/panel/admin_user_group/add";
-$route['panel/admin/users/groups/export']	= "admin/panel/admin_user_group/export";
-$route['panel/admin/users/groups/print']	= "admin/panel/admin_user_group/print";
-$route['panel/admin/users/groups/success/(:num)']			= "admin/panel/admin_user_group";
-$route['panel/admin/users/groups/ajax_list']					= "admin/panel/admin_user_group/index/ajax_list";
-$route['panel/admin/users/groups/ajax_list_info']			= "admin/panel/admin_user_group/index/ajax_list_info";
-$route['panel/admin/users/groups/insert']							= "admin/panel/admin_user_group/insert";
-$route['panel/admin/users/groups/insert_validation']	= "admin/panel/admin_user_group/insert";
-$route['panel/admin/users/groups/read/(:num)']				= "admin/panel/admin_user_group/index/read/$1";
-$route['panel/admin/users/groups/edit/(:num)']				= "admin/panel/admin_user_group/index/edit/$1";
-$route['panel/admin/users/groups/delete/(:num)']			= "admin/panel/admin_user_group/index/delete/$1";
-$route['panel/admin/users/groups/update/(:num)']			= "admin/panel/admin_user_group/index/update/$1";
-$route['panel/admin/users/groups/update_validation/(:num)']	= "admin/panel/admin_user_group/index/update_validation/$1";
+$route['settings/admin/groups']								= "admin/panel/admin_user_group";
+// $route['settings/admin/groups/(:any)']				= "admin/panel/admin_user_group/$1";
+$route['settings/admin/groups/(:any)/(:num)']	= "admin/panel/admin_user_group/$1/$2";
 
-$route['profile/me']								= "admin/panel/account";
-$route['util']											= "admin/util";
-$route['util/databases/list']				= "admin/util/list_db";
-$route['util/databases/backup']			= "admin/util/backup_db";
-$route['util/databases/restore/(:any)']		= "admin/util/restore_db/$1";
-$route['util/databases/remove/(:any)']		= "admin/util/remove_db/$1";
+$route['settings/admin/modules']								= "admin/module/crud";
+$route['settings/admin/modules/builder/(:num)']	= "admin/module/builder/$1";
+$route['settings/admin/modules/(:any)']					= "admin/module/crud/$1";
+$route['settings/admin/modules/(:any)/(:num)']	= "admin/module/crud/$1/$2";
 
-$route['^(\w{2})/(.*)$'] 						= '$2';
-$route['^(\w{2})$'] 								= $route['default_controller'];
+$route['profile/me']													= "admin/panel/account";
+$route['profile/update']											= "admin/panel/account_update_info";
+$route['profile/change_password']							= "admin/panel/account_change_password";
+$route['util']																= "admin/util";
+$route['util/databases/list']									= "admin/util/list_db";
+$route['util/databases/backup']								= "admin/util/backup_db";
+$route['util/databases/restore/(:any)']				= "admin/util/restore_db/$1";
+$route['util/databases/remove/(:any)']				= "admin/util/remove_db/$1";
+
+$route['^(\w{2})/(.*)$'] 											= '$2';
+$route['^(\w{2})$'] 													= $route['default_controller'];
 
 /*
 | -------------------------------------------------------------------------

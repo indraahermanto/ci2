@@ -110,8 +110,9 @@ class MY_Controller extends MX_Controller {
 		}
 		
 		// restrict pages
-		// $uri = ($this->mAction=='index') ? $this->mCtrler : $this->mCtrler.'/'.$this->mAction;
+		// $uri 	= ($this->mAction=='index') ? $this->mCtrler : $this->mCtrler.'/'.$this->mAction;
 		$uri = uri_string();
+		if(count($this->url) > 0 && is_numeric($this->url[count($this->url)])) $uri = str_replace("/".$this->url[count($this->url)], "", $uri);
 		if ( !empty($this->mPageAuth[$uri]) && !$this->ion_auth->in_group($this->mPageAuth[$uri]) )
 		{
 			$page_404 = $this->router->routes['404_override'];
@@ -159,13 +160,17 @@ class MY_Controller extends MX_Controller {
 				}
 				$arrays = array();
 				foreach ($array as $k_arr => $arr) {
-					foreach ($this->router->routes as $k_route => $route) {
-						if($k_arr == $k_route){
-							$arrays[str_replace("", "", $route)] = $arr;
-						}
-					}
+					// foreach ($this->router->routes as $k_route => $route) {
+					// 	if($k_arr == $k_route){
+							$arrays[str_replace("", "", $k_arr)] = $arr;
+					// 	}
+					// }
 				}
 				$this->session->set_userdata(array('page_auth' => $arrays));
+				/*echo "<pre>";
+				print_r($array);
+				print_r($arrays);
+				echo "</pre>";*/
 			}
 			if(!$this->session->has_userdata('layer_page')){
 				$array 	= array();

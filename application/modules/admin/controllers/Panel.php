@@ -32,7 +32,7 @@ class Panel extends Admin_Controller {
 		// only webmaster can reset Admin User password
 		if ( $this->ion_auth->in_group(array('webmaster', 'admin')) )
 		{
-			$crud->add_action('Reset Password', '', 'panel/admin/users/reset_password', 'fa fa-repeat');
+			$crud->add_action('Reset Password', '', 'settings/admin/users/reset_password', 'fa fa-repeat');
 		}
 		
 		// disable direct create / delete Admin User
@@ -93,7 +93,13 @@ class Panel extends Admin_Controller {
 	public function admin_user_group()
 	{
 		$crud = $this->generate_crud('admin_groups');
-		$this->mPageTitle = 'Admin User Groups';
+		$crud->display_as('tag_name','Panel Name');
+		// only webmaster can reset Admin User password
+		if ( $this->ion_auth->in_group(array('webmaster')) )
+		{
+			$crud->add_action('Modules Builder', '', 'settings/admin/modules/builder', 'fa fa-repeat');
+		}
+		$this->mPageTitle = 'Admin Groups';
 		$this->render_crud();
 	}
 
@@ -134,12 +140,12 @@ class Panel extends Admin_Controller {
 	public function account()
 	{
 		// Update Info form
-		$form1 = $this->form_builder->create_form($this->mModule.'/panel/account_update_info');
+		$form1 = $this->form_builder->create_form('profile/update');
 		$form1->set_rule_group('panel/account_update_info');
 		$this->mViewData['form1'] = $form1;
 
 		// Change Password form
-		$form2 = $this->form_builder->create_form($this->mModule.'/panel/account_change_password');
+		$form2 = $this->form_builder->create_form('profile/change_password');
 		$form1->set_rule_group('panel/account_change_password');
 		$this->mViewData['form2'] = $form2;
 
@@ -162,7 +168,7 @@ class Panel extends Admin_Controller {
 			$this->system_message->set_error($errors);
 		}
 
-		redirect($this->mModule.'/panel/account');
+		redirect('profile/me');
 	}
 
 	// Submission of Change Password form
@@ -180,7 +186,7 @@ class Panel extends Admin_Controller {
 			$this->system_message->set_error($errors);
 		}
 
-		redirect($this->mModule.'/panel/account');
+		redirect('profile/me');
 	}
 	
 	/**

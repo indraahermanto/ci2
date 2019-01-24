@@ -343,7 +343,7 @@ class grocery_CRUD_Field_Types
 
 					$file_url = base_url().$field_info->extras->upload_path."/$value";
 
-					$file_url_anchor = '<a href="'.$file_url.'"';
+					$file_url_anchor = '<a href="'.site_url($file_url).'"';
 					if($is_image)
 					{
 						$file_url_anchor .= ' class="image-thumbnail"><img src="'.$file_url.'" height="50px">';
@@ -1932,7 +1932,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		{
 			if(!empty($field_info->primary_key) && !$this->unset_edit)
 			{
-				return $this->l('insert_success_message')." <a class='go-to-edit-form' href='".$this->getEditUrl($field_info->primary_key)."'>".$this->l('form_edit')." {$this->subject}</a> ";
+				return $this->l('insert_success_message')." <a class='go-to-edit-form' href='".site_url($this->getEditUrl($field_info->primary_key))."'>".$this->l('form_edit')." {$this->subject}</a> ";
 			}
 			else
 			{
@@ -1958,7 +1958,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 			if(!$this->unset_back_to_list && !empty($insert_result) && !$this->unset_edit)
 			{
-				$success_message .= " <a class='go-to-edit-form' href='".$this->getEditUrl($insert_result)."'>".$this->l('form_edit')." {$this->subject}</a> ";
+				$success_message .= " <a class='go-to-edit-form' href='".site_url($this->getEditUrl($insert_result))."'>".$this->l('form_edit')." {$this->subject}</a> ";
 
 				if (!$this->_is_ajax()) {
 					$success_message .= $this->l('form_or');
@@ -1967,7 +1967,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 			if(!$this->unset_back_to_list && !$this->_is_ajax())
 			{
-				$success_message .= " <a href='".$this->getListUrl()."'>".$this->l('form_go_back_to_list')."</a>";
+				$success_message .= " <a href='".site_url($this->getListUrl())."'>".$this->l('form_go_back_to_list')."</a>";
 			}
 
 			$success_message .= '</p>';
@@ -2183,7 +2183,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 			$success_message = '<p>'.$this->l('update_success_message');
 			if(!$this->unset_back_to_list && !$this->_is_ajax())
 			{
-				$success_message .= " <a href='".$this->getListUrl()."'>".$this->l('form_go_back_to_list')."</a>";
+				$success_message .= " <a href='".site_url($this->getListUrl())."'>".$this->l('form_go_back_to_list')."</a>";
 			}
 			$success_message .= '</p>';
 
@@ -2571,7 +2571,7 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 	{
 		$file = $file_url = base_url().$field_info->extras->upload_path.'/'.$value;
 
-		$value = !empty($value) ? '<a href="'.$file.'" target="_blank">'.$value.'</a>' : '';
+		$value = !empty($value) ? '<a href="'.site_url($file).'" target="_blank">'.$value.'</a>' : '';
 
 		return $this->get_readonly_input($field_info, $value);
 	}
@@ -2723,14 +2723,14 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 
 		$input .= "<div id='uploader_$unique' rel='$unique' class='grocery-crud-uploader' style='$uploader_display_none'></div>";
 		$input .= "<div id='success_$unique' class='upload-success-url' style='$file_display_none padding-top:7px;'>";
-		$input .= "<a href='".$file_url."' id='file_$unique' class='open-file";
+		$input .= "<a href='".site_url($file_url)."' id='file_$unique' class='open-file";
 		$input .= $is_image ? " $image_class'><img src='".$file_url."' height='50px'>" : "' target='_blank'>$value";
 		$input .= "</a> ";
 		$input .= "<a href='javascript:void(0)' id='delete_$unique' class='delete-anchor'>".$this->l('form_upload_delete')."</a> ";
 		$input .= "</div><div style='clear:both'></div>";
 		$input .= "<div id='loading-$unique' style='display:none'><span id='upload-state-message-$unique'></span> <span class='qq-upload-spinner'></span> <span id='progress-$unique'></span></div>";
-		$input .= "<div style='display:none'><a href='".$this->getUploadUrl($field_info->name)."' id='url_$unique'></a></div>";
-		$input .= "<div style='display:none'><a href='".$this->getFileDeleteUrl($field_info->name)."' id='delete_url_$unique' rel='$value' ></a></div>";
+		$input .= "<div style='display:none'><a href='".site_url($this->getUploadUrl($field_info->name))."' id='url_$unique'></a></div>";
+		$input .= "<div style='display:none'><a href='".site_url($this->getFileDeleteUrl($field_info->name))."' id='delete_url_$unique' rel='$value' ></a></div>";
 
 		return $input;
 	}
@@ -3241,6 +3241,8 @@ class grocery_CRUD_States extends grocery_CRUD_Layout
 			$state_url = !empty($this->list_url_path) && $is_list_page?
 							$this->list_url_path :
 							$this->crud_url_path.'/'.$url ;
+
+							echo "<pre>".$state_url."</pre>";
 		} else {
 			//Complicated scenario. The crud_url_path is not specified so we are
 			//trying to understand what is going on from the URL.
