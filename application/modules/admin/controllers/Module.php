@@ -35,14 +35,6 @@ class Module extends Admin_Controller {
 		$this->load->model('Admin_module_model', 'module');
 		$this->load->helper(array('Sorting'));
 
-		/*$sub_q_a  = "SELECT id, url, name, description, relation, stat_v, status "
-								."FROM d_modules "
-								."WHERE status= 1 ";
-		$sub_q_c  = "ORDER BY col_order, id";
-		$query    = "SELECT id, url, name, description, relation, stat_v, status "
-								."FROM d_modules "
-						."WHERE status= 1 AND id = relation "
-						."ORDER BY col_order, id";*/
 		$this->mViewData['group'] 	= $this->group->get($group_id);
 		if($this->mViewData['group']->id == 1) $this->mViewData['group']->dis = "disabled";
 		else $this->mViewData['group']->dis = "";
@@ -50,6 +42,45 @@ class Module extends Admin_Controller {
 		$modules	= $this->module->get_many_by("status= 1 AND id = relation");
 		usort($modules, build_sorter('col_order'));
 		$this->mViewData['modules'] = $this->childMenu($modules);
+
+		$form 		= $this->form_builder->create_form();
+
+		echo 'asa';
+		if ($form->validate()){
+			echo 'ss';
+			$groupID  = @$this->input->post('inputGroupID');
+    	$modules  = @$this->input->post('inputModules');
+    	if(count($modules) == 0){
+    		$a = "Daftar akses harus diisi.";
+    		echo $a;
+	    	$this->system_message->set_error($a);
+	    }else{
+	    	$this->system_message->set_success('sukses');
+	      // ready for update
+	      // update group tables
+	      /*$update = $this->db->update($this->tables['groups'], $array['input'], array('id' => $data['group']->id));
+	      if($update){
+	        $del = $this->db->delete($this->tables['groups_modules'], array('group_id' => $data['group']->id));
+	        if($del){
+	          foreach ($data['modules'] as $k_module => $module) {
+	            $this->db->insert($this->tables['groups_modules'], array('group_id' => $data['group']->id, 'module_id' => $module));
+	          }
+	          $this->session->set_flashdata('tMess', '0');
+	          $this->session->set_flashdata('message', "Informasi grup berhasil disimpan.");
+	          $this->session->unset_userdata($array);
+	        }else{
+	          $this->session->set_flashdata('tMess', '1');
+	          $this->session->set_flashdata('message', "Terdapat kesalahan, silahkan hubungi adminsitrator.");
+	        }
+	      }else{
+	        $this->session->set_flashdata('tMess', '1');
+	        $this->session->set_flashdata('message', "Terdapat kesalahan, silahkan hubungi adminsitrator.");
+	      }*/
+	    }
+		}else{
+			echo 'asa';
+		}
+		// refresh();
 
 		/*foreach ($modules as $k_module => $module):
 			$id       = $module->id;
@@ -86,7 +117,42 @@ class Module extends Admin_Controller {
 		endforeach;*/
 		/*$modules = $this->childMenu($modules);
 		print_r($modules);*/
+
+		$this->mViewData['form']	= $form;
 		$this->render('panel/group_builder');
+	}
+
+	public function builder_update()
+	{
+		/*$groupID  = @$this->input->post('inputGroupID');
+    $modules  = @$this->input->post('inputModules');
+    $form 		= $this->form_builder->create_form();
+    if(count($data['modules']) == 0){
+    	$this->system_message->set_success($messages);
+      $this->session->set_flashdata('tMess', '1');
+      $this->session->set_flashdata('message', "Daftar akses harus diisi.");
+    }else{
+      // ready for update
+      // update group tables
+      $update = $this->db->update($this->tables['groups'], $array['input'], array('id' => $data['group']->id));
+      if($update){
+        $del = $this->db->delete($this->tables['groups_modules'], array('group_id' => $data['group']->id));
+        if($del){
+          foreach ($data['modules'] as $k_module => $module) {
+            $this->db->insert($this->tables['groups_modules'], array('group_id' => $data['group']->id, 'module_id' => $module));
+          }
+          $this->session->set_flashdata('tMess', '0');
+          $this->session->set_flashdata('message', "Informasi grup berhasil disimpan.");
+          $this->session->unset_userdata($array);
+        }else{
+          $this->session->set_flashdata('tMess', '1');
+          $this->session->set_flashdata('message', "Terdapat kesalahan, silahkan hubungi adminsitrator.");
+        }
+      }else{
+        $this->session->set_flashdata('tMess', '1');
+        $this->session->set_flashdata('message', "Terdapat kesalahan, silahkan hubungi adminsitrator.");
+      }
+    }*/
 	}
 
 	function childMenu($parents){

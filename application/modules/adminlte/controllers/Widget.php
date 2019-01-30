@@ -74,7 +74,7 @@ class Widget extends MX_Controller {
 			'label'		=> $label,
 			'icon'		=> $icon,
 			'url'		=> $url,
-			'more_info'	=> empty($url) ? '&nbsp;' : "More info <i class='fa fa-arrow-circle-right'></i>",
+			'more_info'	=> empty($url) ? '&nbsp;' : "More info <em class='fa fa-arrow-circle-right'></em>",
 		);
 		$this->load->view('widget/small_box', $data);
 	}
@@ -84,7 +84,7 @@ class Widget extends MX_Controller {
 		$data = array(
 			'label'		=> $label,
 			'url'		=> $url,
-			'icon'		=> empty($icon) ? '' : "<i class='$icon'></i>",
+			'icon'		=> empty($icon) ? '' : "<em class='$icon'></em>",
 			'style'		=> $style,
 			'size'		=> empty($size) ? '' : 'btn-'.$size,
 		);

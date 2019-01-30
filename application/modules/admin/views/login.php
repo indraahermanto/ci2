@@ -1,6 +1,6 @@
 <div class="login-box">
 
-	<div class="login-logo"><b><?php echo $site_name; ?></b></div>
+	<div class="login-logo"><strong><?php echo $site_name; ?></strong></div>
 
 	<div class="login-box-body">
 		<p class="login-box-msg">Sign in to start your session</p>

@@ -39,7 +39,7 @@ foreach ($module as $k_menu => $menu) {
 <ul class="sidebar-menu">
   <li class="header"><?=$this->mUserPanel?></li>
   <li class="<?php if(count($url) == 1 && $url[1] == 'main') echo 'active' ?>">
-    <a href="<?=site_url('main')?>"><i class="fa fa-home"></i> <span>Home</span></a>
+    <a href="<?=site_url('main')?>"><em class="fa fa-home"></em> <span>Home</span></a>
   </li>
 <?php
 if(count($module) > 0){
@@ -49,45 +49,45 @@ if(count($module) > 0){
       if(substr($submodule->url, 0, 4) == 'main') $url_ext = $submodule->url;
       else $url_ext = "/".$submodule->url;
       $text .= "<li class='".$submodule->select."'>";
-      $text .= "<a href='".site_url($url_ext)."'><i class='fa ".$submodule->class."'></i> <span>".ucwords($submodule->name)."</span></a>";
+      $text .= "<a href='".site_url($url_ext)."'><em class='fa ".$submodule->class."'></em> <span>".ucwords($submodule->name)."</span></a>";
       $text .= "</li>";
     }else{
       $text .= "<li class='treeview ".$submodule->select."'>";
       $text .= "<a href='#''>";
-      $text .= "<i class='fa ".$submodule->class."'></i> <span>".ucwords($submodule->name)."</span>";
+      $text .= "<em class='fa ".$submodule->class."'></em> <span>".ucwords($submodule->name)."</span>";
       $text .= "<span class='pull-right-container'>";
-      $text .= "<i class='fa fa-angle-left pull-right'></i>";
+      $text .= "<em class='fa fa-angle-left pull-right'></em>";
       $text .= "</span></a>";
       $text .= "<ul class='treeview-menu'> ";
       foreach ($submodule->data as $k_sub_a => $sub_a) {
         if(!isset($sub_a->data)){
           if(substr($submodule->url, 0, 4) == 'main') $url_ext = $sub_a->url;
           else $url_ext = "/".$sub_a->url;
-          $text .= "<li class='".$sub_a->select."'><a href='".site_url($url_ext)."'><i class='fa ".$sub_a->class."'></i> ".ucwords($sub_a->name)."</a></li>";
+          $text .= "<li class='".$sub_a->select."'><a href='".site_url($url_ext)."'><em class='fa ".$sub_a->class."'></em> ".ucwords($sub_a->name)."</a></li>";
         }else{
           $text .= "<li class='treeview ".$sub_a->select."'>";
-          $text .= "<a href='#'><i class='fa ".$sub_a->class."'></i> ".ucwords($sub_a->name);
+          $text .= "<a href='#'><em class='fa ".$sub_a->class."'></em> ".ucwords($sub_a->name);
           $text .= "<span class='pull-right-container'>";
-          $text .= "<i class='fa fa-angle-left pull-right'></i>";
+          $text .= "<em class='fa fa-angle-left pull-right'></em>";
           $text .= "</span></a>";
           $text .= "<ul class='treeview-menu'>";
           foreach ($sub_a->data as $k_sub_b => $sub_b) {
             if(!isset($sub_b->data)){
               if(substr($submodule->url, 0, 4) == 'main') $url_ext = $sub_b->url;
               else $url_ext = "/".$sub_b->url;
-              $text .= "<li class='".$sub_b->select."'><a href='".site_url($url_ext)."'><i class='fa ".$sub_b->class."'></i> ".ucwords($sub_b->name)."</a></li>";
+              $text .= "<li class='".$sub_b->select."'><a href='".site_url($url_ext)."'><em class='fa ".$sub_b->class."'></em> ".ucwords($sub_b->name)."</a></li>";
             }else{
               $text .= "<li class='treeview ".$sub_b->select."'>";
-              $text .= "<a href='#'><i class='fa ".$sub_b->class."'></i> ".ucwords($sub_b->name);
+              $text .= "<a href='#'><em class='fa ".$sub_b->class."'></em> ".ucwords($sub_b->name);
               $text .= "<span class='pull-right-container'>";
-              $text .= "<i class='fa fa-angle-left pull-right'></i>";
+              $text .= "<em class='fa fa-angle-left pull-right'></em>";
               $text .= "</span></a>";
               $text .= "<ul class='treeview-menu'>";
               foreach ($sub_b->data as $k_sub_c => $sub_c) {
                 if(!isset($sub_c->data)){
                   if(substr($submodule->url, 0, 4) == 'main') $url_ext = $sub_c->url;
                   else $url_ext = "/".$sub_c->url;
-                  $text .= "<li class='".$sub_c->select."'><a href='".site_url($url_ext)."'><i class='fa ".$sub_c->class."'></i> ".ucwords($sub_c->name)."</a></li>";
+                  $text .= "<li class='".$sub_c->select."'><a href='".site_url($url_ext)."'><em class='fa ".$sub_c->class."'></em> ".ucwords($sub_c->name)."</a></li>";
                 }
               }
               $text .= "</ul></li>";

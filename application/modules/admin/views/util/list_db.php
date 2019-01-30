@@ -19,7 +19,7 @@
 					<th>Action</th>
 				</tr>
 				<tr>
-					<td><b>Latest</b></td>
+					<td><strong>Latest</strong></td>
 					<td><?php echo FCPATH.'sql/latest.sql'; ?></td>
 					<td><a href="<?=site_url('util/databases/restore/latest')?>" class="btn btn-primary">Restore</a></td>
 				</tr>
@@ -28,7 +28,7 @@
 					<td>
 						<?php
 							$datetime = explode('_', str_replace('.sql', '', $file));
-							echo '<b>'.$datetime[0].'</b> '.str_replace('-', ':', $datetime[1]);
+							echo '<strong>'.$datetime[0].'</strong> '.str_replace('-', ':', $datetime[1]);
 						?>
 					</td>
 					<td><?php echo FCPATH.'sql/backup/'.$file; ?></td>

@@ -4,7 +4,7 @@
 			<div class="box-header with-border">
 				<h3 class="box-title" style="font-size:15px">Group Builder</h3>
 				<div class="box-tools pull-right">
-					<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+					<button class="btn btn-box-tool" data-widget="collapse"><em class="fa fa-minus"></em></button>
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body" style="min-height: 450px;overflow:auto;overflow-x: hidden;">
@@ -12,6 +12,8 @@
 					<!-- edit form column -->
 					<div class="col-md-12 personal-info">
 						<form method="POST" class="form-horizontal" role="form">
+						<?php echo $form->messages(); ?>
+							<input type="hidden" name="inputGroupID" value="<?=$group->id?>">
 							<div class="col-lg-12">
 								<h4>Group Information:</h4><br/>
 							</div>
@@ -30,7 +32,7 @@
 							<div class="form-group">
 								<label class="col-lg-3 control-label">Description : </label>
 								<div class="col-lg-8">
-									<textarea name="inputDesc" <?=$group->dis?> class="form-control"><?=$group->description?></textarea>
+									<textarea <?=$group->dis?> class="form-control"><?=$group->description?></textarea>
 								</div>
 							</div>
 							<div class="form-group">
@@ -60,7 +62,7 @@
 											$checkbox 		= '<input '.$group->dis.' '.$check.' type="checkbox" name="inputModules[]" value="'.$menu->id.'"/>';
 											$group->dis 	= $dis_tmp;
 										else: $checkbox = ""; endif;
-										$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><i class="fa fa-pencil"></i></a>';
+										$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><em class="fa fa-pencil"></em></a>';
 										echo '<li>'.$checkbox.' <a href="'.site_url('settings/admin/modules/read/'.$menu->id).'">'.$menu->name."</a> ".$visible;
 
 										if($checkbox != "") goto endLevel;
@@ -75,7 +77,7 @@
 											if(!isset($menu->children)) 
 												$checkbox = '<input '.$group->dis.' '.$check.' type="checkbox" name="inputModules[]" value="'.$menu->id.'"/>';
 											else $checkbox = "";
-											$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><i class="fa fa-pencil"></i></a>';
+											$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><em class="fa fa-pencil"></em></a>';
 											echo '<li>'.$checkbox.' <a href="'.site_url('settings/admin/modules/read/'.$menu->id).'">'.$menu->name."</a> ".$visible."</li>";
 											if($checkbox != "") goto endLevelAlpha;
 											/*level 3*/
@@ -89,7 +91,7 @@
 												if(!isset($menu->children)) 
 													$checkbox = '<input '.$group->dis.' '.$check.' type="checkbox" name="inputModules[]" value="'.$menu->id.'"/>';
 												else $checkbox = "";
-												$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><i class="fa fa-pencil"></i></a>';
+												$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><em class="fa fa-pencil"></em></a>';
 												echo '<li>'.$checkbox.' <a href="'.site_url('settings/admin/modules/read/'.$menu->id).'">'.$menu->name."</a> ".$visible."</li>";
 												if($checkbox != "") goto endLevelBeta;
 												/*level 4*/
@@ -103,7 +105,7 @@
 													if(!isset($menu->children)) 
 														$checkbox = '<input '.$group->dis.' '.$check.' type="checkbox" name="inputModules[]" value="'.$menu->id.'"/>';
 													else $checkbox = "";
-													$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><i class="fa fa-pencil"></i></a>';
+													$anchor 		= '<a href="'.site_url('settings/admin/modules/edit/'.$menu->id).'"><em class="fa fa-pencil"></em></a>';
 													echo '<li>'.$checkbox.' <a href="'.site_url('settings/admin/modules/read/'.$menu->id).'">'.$menu->name."</a> ".$visible."</li>";
 													if($checkbox != "") goto endLevelCharly;
 													endLevelCharly:
@@ -124,11 +126,9 @@
 							</div>
 							<hr>
 							<div class="col-xs-offset-10 col-xs-1">
-								<button class="btn btn-flat btn-success btn-sm">
-									Save
-								</button>
+								<?php echo $form->bs3_submit('Save', 'btn btn-flat btn-success btn-sm'); ?>
 							</div>
-						</form>
+						<?php echo $form->close(); ?>
 					</div>
 				</div>
 			</div>

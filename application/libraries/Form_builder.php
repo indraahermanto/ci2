@@ -166,6 +166,14 @@ class Form {
 		return form_hidden($data, $value, $extra);
 	}
 
+	// checkbox field
+	public function field_checkbox($name = 'checklist', $value = NULL, $checked = false, $extra = array())
+	{
+		$data = array('id' => $name, 'name' => $name);
+		$value = ($value===NULL) ? '' : $value;
+		return form_checkbox($data, $value, $checked, $extra);
+	}
+
 	// Dropdown field
 	public function field_dropdown($name, $options = array(), $selected = array(), $extra = array())
 	{

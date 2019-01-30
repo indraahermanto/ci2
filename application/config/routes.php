@@ -102,10 +102,11 @@ $route['settings/admin/groups']								= "admin/panel/admin_user_group";
 // $route['settings/admin/groups/(:any)']				= "admin/panel/admin_user_group/$1";
 $route['settings/admin/groups/(:any)/(:num)']	= "admin/panel/admin_user_group/$1/$2";
 
-$route['settings/admin/modules']								= "admin/module/crud";
-$route['settings/admin/modules/builder/(:num)']	= "admin/module/builder/$1";
-$route['settings/admin/modules/(:any)']					= "admin/module/crud/$1";
-$route['settings/admin/modules/(:any)/(:num)']	= "admin/module/crud/$1/$2";
+$route['settings/admin/modules']									= "admin/module/crud";
+$route['settings/admin/modules/builder/update']		= "admin/module/builder_update";
+$route['settings/admin/modules/builder/(:num)']		= "admin/module/builder/$1";
+$route['settings/admin/modules/(:any)']						= "admin/module/crud/$1";
+$route['settings/admin/modules/(:any)/(:num)']		= "admin/module/crud/$1/$2";
 
 $route['profile/me']													= "admin/panel/account";
 $route['profile/update']											= "admin/panel/account_update_info";

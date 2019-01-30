@@ -1,6 +1,6 @@
 <div class='info-box'>
 	<a href='<?php echo $url; ?>'>
-		<span class='info-box-icon bg-<?php echo $color; ?>'><i class='<?php echo $icon; ?>'></i></span>
+		<span class='info-box-icon bg-<?php echo $color; ?>'><em class='<?php echo $icon; ?>'></em></span>
 	</a>
 	<div class='info-box-content'>
 		<span class='info-box-text'><?php echo $label; ?></span>

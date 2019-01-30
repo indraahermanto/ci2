@@ -4,7 +4,7 @@
 		<p><?php echo $label; ?></p>
 	</div>
 	<div class='icon'>
-		<i class='<?php echo $icon; ?>'></i>
+		<em class='<?php echo $icon; ?>'></em>
 	</div>
 	<a href='<?php echo $url; ?>' class='small-box-footer'><?php echo $more_info; ?></a>
 </div>
