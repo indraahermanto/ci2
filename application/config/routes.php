@@ -108,6 +108,14 @@ $route['settings/admin/modules/builder/(:num)']		= "admin/module/builder/$1";
 $route['settings/admin/modules/(:any)']						= "admin/module/crud/$1";
 $route['settings/admin/modules/(:any)/(:num)']		= "admin/module/crud/$1/$2";
 
+$route['test_hier/one']												= "admin/test/one";
+$route['test_hier/two']												= "admin/test/two";
+$route['test_hier/three/topup']								= "admin/test/three_topup";
+$route['test_hier/three/withdraw']						= "admin/test/three_withdraw";
+$route['test_hier/three/transfer']						= "admin/test/three_transfer";
+$route['test_hier/three/history']							= "admin/test/three_history";
+$route['test_hier/three/history/(:any)']			= "admin/test/three_history/$1";
+
 $route['profile/me']													= "admin/panel/account";
 $route['profile/update']											= "admin/panel/account_update_info";
 $route['profile/change_password']							= "admin/panel/account_change_password";

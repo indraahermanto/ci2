@@ -45,7 +45,6 @@ class Module extends Admin_Controller {
 
 		$form 		= $this->form_builder->create_form();
 
-		echo 'asa';
 		if ($form->validate()){
 			echo 'ss';
 			$groupID  = @$this->input->post('inputGroupID');
